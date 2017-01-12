@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26127.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp6", "CSharp6\CSharp6.csproj", "{686903B8-85BD-42E2-AF2D-A3E4EC6A49E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp5", "AsyncAwaitInDepth\CSharp5.csproj", "{29DAC898-9999-41DB-AC88-D69CFB25210F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp7", "CSharp7\CSharp7.csproj", "{1E313449-404B-431F-9220-25CCD3BF3A9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{686903B8-85BD-42E2-AF2D-A3E4EC6A49E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686903B8-85BD-42E2-AF2D-A3E4EC6A49E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686903B8-85BD-42E2-AF2D-A3E4EC6A49E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686903B8-85BD-42E2-AF2D-A3E4EC6A49E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29DAC898-9999-41DB-AC88-D69CFB25210F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29DAC898-9999-41DB-AC88-D69CFB25210F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29DAC898-9999-41DB-AC88-D69CFB25210F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29DAC898-9999-41DB-AC88-D69CFB25210F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E313449-404B-431F-9220-25CCD3BF3A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E313449-404B-431F-9220-25CCD3BF3A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E313449-404B-431F-9220-25CCD3BF3A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E313449-404B-431F-9220-25CCD3BF3A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+	EndGlobalSection
+EndGlobal
