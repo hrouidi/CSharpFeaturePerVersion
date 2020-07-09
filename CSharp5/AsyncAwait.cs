@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,56 +10,23 @@ using System.Threading.Tasks;
 
 namespace CSharp5
 {
-    public static class AsyncAwaitInDepth
+    [TestFixture]
+    public static class AsyncAwait
     {
-        public static async void RunSample()
+        #region Contextual keywords
+
+        [Test]
+        public static void SomeMethodUsingAwaitAsyncAsVariablesNames()
         {
-            var ret = await await await await await await await await 123;
-
-            //int primescont = await GetPrimesCountAsync(0, 1000000);
-            //string createdFilePath = await GetCreatedFileAsync(Directory.GetCurrentDirectory());
-
-            #region  Exceptions
-
-            RunSilentException();// innobservable exception 
-            RunSilentException1();// innobservable exception 
-            MethodThatCheckArguments(string.Empty);// but no ArgumentNullException
-            //can catch ths exceptions
-            try
-            {
-                await RunSilentException(); // observable exception 
-                //await RunSilentException1();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            // cannot catch this exeption on Apps with synchronization context
-            try
-            {
-                RunUnhandledException();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            // cannot catch this exeption on Apps with synchronization context
-            try
-            {
-                RunUncatchedException();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            #endregion
-
+            int await = 1;
+            Assert.AreEqual(1, await);
+            string async = "ret";
+            Assert.AreEqual("ret", async);
         }
 
-        #region Normal case
+        #endregion
+
+        #region regular cases
 
         //Compute bound async method: tie up a thread 
         private static Task<int> GetPrimesCountAsync(int start, int count)
@@ -99,17 +67,83 @@ namespace CSharp5
 
         #endregion
 
-        #region Exceptions Tips
+        #region Async methods arguments Check 
 
-        // Common error: arguments check, it s like iterator yield methods
-        // C#7 loacl method can help with :)
-        private static async Task<int> MethodThatCheckArguments(string name)
+        [Test]
+        public static void AsyncMethodThatChecksArguments_Tests()
+        {
+            // Diff behavior
+            Assert.DoesNotThrow(() => AsyncMethodThatChecksArgumentsAsync(null));// Exception is within forget task
+            Assert.Throws<ArgumentNullException>(() => AsyncMethodThatChecksArgumentsEagerly(null));
+            // Same behavior
+            Assert.ThrowsAsync<ArgumentNullException>(async () => await AsyncMethodThatChecksArgumentsAsync(null));
+            Assert.ThrowsAsync<ArgumentNullException>(async () => await AsyncMethodThatChecksArgumentsEagerly(null));
+        }
+
+        // Arguments are checked asynchronously into the task ! 
+        private static async Task<int> AsyncMethodThatChecksArgumentsAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException(nameof(name));
+                throw new ArgumentNullException("name");
             await Task.Delay(1000);
             return 0;
         }
+        // the best way : https://stackoverflow.com/questions/18656379/validate-parameters-in-async-method
+        // C#7 : make the impl method  static local
+        private static Task<int> AsyncMethodThatChecksArgumentsEagerly(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name");
+
+            return AsyncMethodThatChecksArgumentsEagerly_Impl(name);
+        }
+
+        private static async Task<int> AsyncMethodThatChecksArgumentsEagerly_Impl(string name)
+        {
+            await Task.Delay(1000);
+            return 0;
+        }
+
+        #region Comparaison with Iterator impl using Yield
+
+        [Test]
+        public static void IteratorMethodThatChecksArguments_Tests()
+        {
+            // Diff behavior
+            Assert.DoesNotThrow(() => IteratorMethodThatChecksArguments(null));
+            Assert.Throws<ArgumentNullException>(() => IteratorMethodThatChecksArgumentsEagerly(null));
+            // Same behavior
+            Assert.Throws<ArgumentNullException>(() => IteratorMethodThatChecksArguments(null).ToList());
+            Assert.Throws<ArgumentNullException>(() => IteratorMethodThatChecksArgumentsEagerly(null).ToList());
+
+        }
+
+        private static IEnumerable<char> IteratorMethodThatChecksArguments(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name");
+            foreach (var ch in name)
+                yield return ch;
+        }
+
+        private static IEnumerable<char> IteratorMethodThatChecksArgumentsEagerly(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name");
+
+            return IteratorMethodThatChecksArgumentsEagerly_Impl(name);
+        }
+
+        private static IEnumerable<char> IteratorMethodThatChecksArgumentsEagerly_Impl(string name)
+        {
+            foreach (var ch in name)
+                yield return ch;
+        }
+        #endregion
+
+        #endregion
+
+        #region Exceptions Tips
 
         // When method has void return, exceptions are posted to the synchronization
         //context(if present) and never to the caller
@@ -120,12 +154,24 @@ namespace CSharp5
             await Task.Delay(1000);
             throw new Exception("Will this be observed");
         }
+
+        [Test]
+        public static void UncatchedException_Test()
+        {
+            Assert.DoesNotThrow(RunUncatchedException);
+        }
         private static async void RunUncatchedException()
         {
             throw new Exception("Will this be uncatched");
         }
 
         // When method has void Task/Task<T>, exceptions are encapulated into task
+        [Test]
+        public static void SilentException_Test()
+        {
+            Assert.DoesNotThrow(() => RunSilentException());
+            Assert.ThrowsAsync<Exception>(async () => await RunSilentException());
+        }
         private static async Task<int> RunSilentException()
         {
             //throw null;
@@ -133,10 +179,17 @@ namespace CSharp5
             throw new Exception("Will this be ignored?");
         }
         //
+
+        [Test]
+        public static void SilentException1_Test()
+        {
+            Assert.DoesNotThrow(() => RunSilentException1());
+            Assert.ThrowsAsync<Exception>(async () => await RunSilentException1());
+        }
         private static async Task RunSilentException1()
         {
             // the key word async wrap the throw statement into a task 
-            // so exception is observable via Task, (with await for exmaple...)
+            // so, exception is observable via Task, (with await for example...)
             throw new Exception("Will this be ignored?");
         }
 
@@ -160,6 +213,12 @@ namespace CSharp5
         private static async Task<string> AsyncTask()
         {
             await Task.Delay(1);
+            return "Done";
+        }
+
+        private static async ValueTask<string> AsyncValueTask()
+        {
+            await Task.Yield();
             return "Done";
         }
 
@@ -227,7 +286,6 @@ namespace CSharp5
 
         #region Await Tips
 
-
         //On Await into lock block
         //public static async void AwaitLock()
         //{
@@ -237,7 +295,7 @@ namespace CSharp5
         //    }
         //}
 
-        
+
 
         // Await already signaled tasks
         public static async void AwaitAlreadySignaledTasks()
@@ -282,6 +340,7 @@ namespace CSharp5
         {
             int ret = await new CustomAwaitble();
         }
+
         public class CustomAwaitble
         {
             public CustomAwaiter GetAwaiter()
@@ -295,7 +354,10 @@ namespace CSharp5
         //3.have GetGetResult() methods(return type can be void or any type as Task and Task<T>)
         public struct CustomAwaiter : INotifyCompletion
         {
-            public bool IsCompleted => true;
+            public bool IsCompleted
+            {
+                get { return true; }
+            }
 
             public int GetResult()
             {
@@ -331,7 +393,7 @@ namespace CSharp5
             Task<int> tmp = await Task.WhenAny(Delay1(), Delay2(), Delay3());
             ret = await tmp;
         }
-        
+
         // Je me fais plaise ^^ avec mon MetaAwaiter
         // et çà compile lol
         public static async void Await________AwaitMethod()
@@ -357,7 +419,10 @@ namespace CSharp5
 
     public class MetaAwaiter : INotifyCompletion
     {
-        public bool IsCompleted => true;
+        public bool IsCompleted
+        {
+            get { return true; }
+        }
 
         public Task<int> GetResult()
         {

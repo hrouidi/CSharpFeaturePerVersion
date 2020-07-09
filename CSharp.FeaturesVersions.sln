@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp8", "CSharp8\CSharp8.csproj", "{75A32971-A925-458B-8124-C46AAFF57431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp5", "CSharp5\CSharp5.csproj", "{A88FE0E8-A906-47AB-9963-9E22FC04D637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp6", "CSharp6\CSharp6.csproj", "{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp7", "CSharp7\CSharp7.csproj", "{0101074A-5449-4519-809D-AE75E81CDADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75A32971-A925-458B-8124-C46AAFF57431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A32971-A925-458B-8124-C46AAFF57431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A32971-A925-458B-8124-C46AAFF57431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A32971-A925-458B-8124-C46AAFF57431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A88FE0E8-A906-47AB-9963-9E22FC04D637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A88FE0E8-A906-47AB-9963-9E22FC04D637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A88FE0E8-A906-47AB-9963-9E22FC04D637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A88FE0E8-A906-47AB-9963-9E22FC04D637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0101074A-5449-4519-809D-AE75E81CDADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0101074A-5449-4519-809D-AE75E81CDADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0101074A-5449-4519-809D-AE75E81CDADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0101074A-5449-4519-809D-AE75E81CDADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+		SolutionGuid = {BE0273B9-B07F-482D-AE12-B582D736EB95}
+	EndGlobalSection
+EndGlobal

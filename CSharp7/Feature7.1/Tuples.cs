@@ -1,12 +1,24 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using FluentAssertions;
+//using System.ValueTuple;
 
 
 namespace CSharp7.Feature
 {
+    public struct Point
+    {
+        public int X;
+        public int Y;
+
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+    }
     public static class  PointExtension
     {
         public static void Deconstruct(this Point point, out int x, out int y)
@@ -78,12 +90,12 @@ namespace CSharp7.Feature
             int b = 0;
             (a, b) = (a + b, a - b);
             (a, b) = (10, 32);
-            a.ShouldBeEquivalentTo(10);
-            b.ShouldBeEquivalentTo(32);
+            Assert.AreEqual(10, a);
+            Assert.AreEqual(32, b);
             //2.elegant  Permutation
             (a, b) = (b, a);
-            a.ShouldBeEquivalentTo(32);
-            b.ShouldBeEquivalentTo(10);
+            Assert.AreEqual(32, a);
+            Assert.AreEqual(10, b);
 
         }
 
