@@ -7,6 +7,7 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
 
 namespace CSharp5
 {
@@ -197,11 +198,20 @@ namespace CSharp5
 
         #region Async Tips
 
-        // No async on methods that takes out/ret parameters
-        //private static async void AsyncRetOut(int x,ref int y,out int z)
-        //{
+        [Test]
+        public static void AsyncMethodWithOutOrRefParamsDoesNotCompile()
+        {
+            string code = @"private static async void AsyncRetOut(int x, ref int y, out int z)
+                            {
 
-        //}
+                            }";
+
+            var tmp = CSharpScript.Create(code);
+            var dias = tmp.Compile();
+            Assert.AreEqual(2, dias.Length);
+            Assert.AreEqual("CS1988", dias[0].Id);
+            Assert.AreEqual("CS1988", dias[1].Id);
+        }
 
         // Async void
         private static async void AsyncVoid()
@@ -294,7 +304,23 @@ namespace CSharp5
         //        await Task.FromResult(1); 
         //    }
         //}
+        [Test]
+        public static void AwaitInLockBlockDoesNotCompile()
+        {
+            string code = @"using System.Threading.Tasks;
+                            public static async void AwaitLock()
+                            {
+                                lock(new object())  
+                                {  
+                                    await Task.FromResult(1); 
+                                }
+                            }";
 
+            var tmp = CSharpScript.Create(code);
+            var dias = tmp.Compile();
+            Assert.AreEqual(1, dias.Length);
+            Assert.AreEqual("CS1996", dias[0].Id);
+        }
 
 
         // Await already signaled tasks
