@@ -96,9 +96,9 @@ namespace CSharp7.Feature
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException(message: "You must supply a name", paramName: nameof(name));
 
-            return longRunningWorkImplementation();
+            return LongRunningWorkImplementation();
             // capturing local variables
-            async Task<string> longRunningWorkImplementation()
+            async Task<string> LongRunningWorkImplementation()
             {
                 var interimResult = await Task.FromResult(index);
                 return $"The results are {interimResult} . Enjoy.";
