@@ -14,12 +14,12 @@ namespace CSharp9
         [Test]
         public static void RecordType_Test()
         {
-            var me = new Person("Houssam", "Rouidi");
+            Person me = new("Houssam", "Rouidi");
             Assert.AreEqual(("Houssam", "Rouidi"), (me.FirtName, me.LastName));
             var alterEgo = new Person("Houssam", "Rouidi");
             // reference equality
             Assert.AreNotSame(me, alterEgo);
-            Assert.IsFalse(me== alterEgo);
+            Assert.IsFalse(ReferenceEquals(me, alterEgo));
             //structured equality
             Assert.IsTrue(me.Equals(alterEgo));
             Assert.AreEqual(me.GetHashCode(), alterEgo.GetHashCode());
@@ -27,10 +27,15 @@ namespace CSharp9
             Assert.AreEqual("Houssam", f);
             Assert.AreEqual("Rouidi", l);
             //me.FirtName = "kk"; Does'not compile
-            var you = me with{FirtName="You"}
-            ;
+            var you = me with { FirtName = "You" };
             Assert.AreEqual("You", you.FirtName);
             Assert.AreEqual("Rouidi", you.LastName);
+        }
+        private string Get(string name)
+        {
+            if (name is not null)
+                return name;
+            return string.Empty;
         }
     }
 }

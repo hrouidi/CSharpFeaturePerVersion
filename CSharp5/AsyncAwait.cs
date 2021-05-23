@@ -149,21 +149,23 @@ namespace CSharp5
         // When method has void return, exceptions are posted to the synchronization
         //context(if present) and never to the caller
         // faults app execution and no way to catch it in try catch block !
-        private static async void RunUnhandledException()
+        private static async void RunUnobservableException1()
         {
             // Throw null
             await Task.Delay(1000);
             throw new Exception("Will this be observed");
         }
 
-        [Test]
-        public static void UncatchedException_Test()
-        {
-            Assert.DoesNotThrow(RunUncatchedException);
-        }
-        private static async void RunUncatchedException()
+        private static async void RunUnobservableException2()
         {
             throw new Exception("Will this be uncatched");
+        }
+
+        [Test]
+        public static void UnobservableException_Test()
+        {
+            RunUnobservableException1();
+            RunUnobservableException2();
         }
 
         // When method has void Task/Task<T>, exceptions are encapulated into task
