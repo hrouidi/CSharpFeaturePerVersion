@@ -5,7 +5,13 @@ namespace CSharp9
     public class ModuleInit
     {
         [ModuleInitializer]
-        public static void InitializeModule()
+        public static void InitializeModule1()
+        {
+
+        }
+
+        [ModuleInitializer]
+        public static void InitializeModule2()
         {
 
         }

@@ -76,7 +76,7 @@ namespace CSharp7.Feature
 
 
             // infinite tuple items
-            var veryBigTuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            var veryBigTuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,"def",10.23,DateTime.Now);
 
             // convertion to legacy tuple type
             Tuple<int, int,string> eddd = (1,2,"done").ToTuple();
