@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp8", "CSharp8\CSharp8.csproj", "{75A32971-A925-458B-8124-C46AAFF57431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp08", "CSharp8\CSharp08.csproj", "{75A32971-A925-458B-8124-C46AAFF57431}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp5", "CSharp5\CSharp5.csproj", "{A88FE0E8-A906-47AB-9963-9E22FC04D637}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp05", "CSharp5\CSharp05.csproj", "{A88FE0E8-A906-47AB-9963-9E22FC04D637}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp6", "CSharp6\CSharp6.csproj", "{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp06", "CSharp6\CSharp06.csproj", "{2170A2EA-DDDB-45F8-BCB8-BB0D6335FA34}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp7", "CSharp7\CSharp7.csproj", "{0101074A-5449-4519-809D-AE75E81CDADA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp07", "CSharp7\CSharp07.csproj", "{0101074A-5449-4519-809D-AE75E81CDADA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp9", "CSharp9\CSharp9.csproj", "{3ABE026E-558D-49DA-B12A-05439A8E5136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp09", "CSharp9\CSharp09.csproj", "{3ABE026E-558D-49DA-B12A-05439A8E5136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp10", "CSharp10\CSharp10.csproj", "{126ED80E-BF6B-40C8-9984-7D2AB0D260C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp10", "CSharp10\CSharp10.csproj", "{126ED80E-BF6B-40C8-9984-7D2AB0D260C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp11", "CSharp11\CSharp11.csproj", "{CE47858C-1F52-4F77-BD24-4B322F1A4924}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,12 +47,16 @@ Global
 		{126ED80E-BF6B-40C8-9984-7D2AB0D260C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{126ED80E-BF6B-40C8-9984-7D2AB0D260C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{126ED80E-BF6B-40C8-9984-7D2AB0D260C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE47858C-1F52-4F77-BD24-4B322F1A4924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE47858C-1F52-4F77-BD24-4B322F1A4924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE47858C-1F52-4F77-BD24-4B322F1A4924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE47858C-1F52-4F77-BD24-4B322F1A4924}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
 		SolutionGuid = {BE0273B9-B07F-482D-AE12-B582D736EB95}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
 	EndGlobalSection
 EndGlobal
