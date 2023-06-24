@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharp7.Feature
+namespace CSharp7
 {
     class MoreExpressionBodyMembers
     {
@@ -20,7 +20,7 @@ namespace CSharp7.Feature
         public string Label
         {
             get => label;
-            set => this.label = value ?? "Default label";
+            set => label = value ?? "Default label";
         }
 
         // Expression-bodied get / set indexer.

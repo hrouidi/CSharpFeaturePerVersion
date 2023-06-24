@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharp7.Feature
+namespace CSharp7
 {
     public class LocalFunctions
     {
@@ -29,9 +29,9 @@ namespace CSharp7.Feature
             {
                 return z + localSum1();
             }
-            return localSum1()+ localSum2();
+            return localSum1() + localSum2();
         }
-        
+
         //Expression body local function
         public static int Sum2(int x, int y, int z)
         {
@@ -70,9 +70,9 @@ namespace CSharp7.Feature
         //on iterator method
         public static IEnumerable<char> AlphabetSubset(char start, char end)
         {
-            if ((start < 'a') || (start > 'z'))
+            if (start < 'a' || start > 'z')
                 throw new ArgumentOutOfRangeException(paramName: nameof(start), message: "start must be a letter");
-            if ((end < 'a') || (end > 'z'))
+            if (end < 'a' || end > 'z')
                 throw new ArgumentOutOfRangeException(paramName: nameof(end), message: "end must be a letter");
 
             if (end <= start)

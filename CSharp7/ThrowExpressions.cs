@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharp7.Feature
+namespace CSharp7
 {
     class ThrowExpressions
     {
@@ -15,7 +15,7 @@ namespace CSharp7.Feature
         public string Name
         {
             get => _name;
-            set => _name = value ??  throw new ArgumentNullException(nameof(value), "New name must not be null");
+            set => _name = value ?? throw new ArgumentNullException(nameof(value), "New name must not be null");
         }
 
         // throw expression on field initialization

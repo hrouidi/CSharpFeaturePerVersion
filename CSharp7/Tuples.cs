@@ -5,7 +5,7 @@ using System.Linq;
 //using System.ValueTuple;
 
 
-namespace CSharp7.Feature
+namespace CSharp7
 {
     public struct Point
     {
@@ -19,7 +19,7 @@ namespace CSharp7.Feature
         }
 
     }
-    public static class  PointExtension
+    public static class PointExtension
     {
         public static void Deconstruct(this Point point, out int x, out int y)
         {
@@ -41,16 +41,16 @@ namespace CSharp7.Feature
             (int first, (int, int) rest) ret2 = tu.Item2;
             var matrix = ((1, 2, 3), (1, 2, 3), (1, 2, 3));
 
-           
+
             //Deconstruction
             var p = new Point(0, 1);
 
             //explicit type
-            (int x , int y) = p;
+            (int x, int y) = p;
             if (x == y)
                 Console.WriteLine($"{x} = {y}");
             // infereded type
-            var( xx,  yy) = p;
+            var (xx, yy) = p;
 
             // Function that return a tuple
             // with var
@@ -58,11 +58,11 @@ namespace CSharp7.Feature
             if (ret0.Item1 >= ret0.Item2)
                 Console.WriteLine("ok");
             //explicit type 
-            (int , int ) ret1 = GetBornes(Enumerable.Range(0, 10));
+            (int, int) ret1 = GetBornes(Enumerable.Range(0, 10));
             if (ret1.Item1 >= ret1.Item2)
                 Console.WriteLine("ok");
             // renaming item tuples
-            (int max, int min ) ret3 = GetBornes(Enumerable.Range(0, 10));
+            (int max, int min) ret3 = GetBornes(Enumerable.Range(0, 10));
             if (ret3.max >= ret3.min)
                 Console.WriteLine("ok");
             // reuse existing variables
@@ -76,13 +76,13 @@ namespace CSharp7.Feature
 
 
             // infinite tuple items
-            var veryBigTuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,"def",10.23,DateTime.Now);
+            var veryBigTuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "def", 10.23, DateTime.Now);
 
             // convertion to legacy tuple type
-            Tuple<int, int,string> eddd = (1,2,"done").ToTuple();
+            Tuple<int, int, string> eddd = (1, 2, "done").ToTuple();
             //Doesn't compile !
             //var legacyTuple = veryBigTuple.ToTuple();
-            
+
             // Usefull usage :
 
             //1.Multiple affectation
@@ -99,7 +99,7 @@ namespace CSharp7.Feature
 
         }
 
-       private static (int Max, int Min) GetBornes(IEnumerable<int> numbers)
+        private static (int Max, int Min) GetBornes(IEnumerable<int> numbers)
         {
             int min = int.MaxValue;
             int max = int.MinValue;

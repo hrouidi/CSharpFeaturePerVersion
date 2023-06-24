@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharp7.Feature
+namespace CSharp7
 {
     class OutVariable
     {
@@ -20,15 +20,15 @@ namespace CSharp7.Feature
 
             //Mixed
             int ret1;
-            if(TryParse("1", "2", out ret1, out var ret2))
+            if (TryParse("1", "2", out ret1, out var ret2))
                 Console.WriteLine($"{ret1} : {ret2}");
         }
 
-        private static bool TryParse(string s1,string s2,out int num1,out int num2)
+        private static bool TryParse(string s1, string s2, out int num1, out int num2)
         {
             var ret = int.TryParse(s1, out num1);
-            ret =  int.TryParse(s2, out num2) && ret;
-            return ret ;
+            ret = int.TryParse(s2, out num2) && ret;
+            return ret;
         }
     }
 }
