@@ -14,6 +14,7 @@ namespace CSharp12
         public void Test1()
         {
             Point p = new Point(1, 3);
+            p.x = 1;
             PointEx pEx = new PointEx(1, 3);
 
             DataSource ds = new Dictionary<Point, ILookup<int, string>>();
