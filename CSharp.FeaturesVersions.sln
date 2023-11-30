@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp10", "CSharp10\CSharp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp11", "CSharp11\CSharp11.csproj", "{CE47858C-1F52-4F77-BD24-4B322F1A4924}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp12", "CSharp12\CSharp12.csproj", "{9F1E8386-E074-4A69-9212-E30F9385B3E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp12", "CSharp12\CSharp12.csproj", "{9F1E8386-E074-4A69-9212-E30F9385B3E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Twists", "CSharp.Twists\CSharp.Twists.csproj", "{0E7EF597-AEA3-447E-9F9B-5CEBF99529F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,12 +59,16 @@ Global
 		{9F1E8386-E074-4A69-9212-E30F9385B3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F1E8386-E074-4A69-9212-E30F9385B3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F1E8386-E074-4A69-9212-E30F9385B3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7EF597-AEA3-447E-9F9B-5CEBF99529F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7EF597-AEA3-447E-9F9B-5CEBF99529F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7EF597-AEA3-447E-9F9B-5CEBF99529F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7EF597-AEA3-447E-9F9B-5CEBF99529F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BE0273B9-B07F-482D-AE12-B582D736EB95}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+		SolutionGuid = {BE0273B9-B07F-482D-AE12-B582D736EB95}
 	EndGlobalSection
 EndGlobal
