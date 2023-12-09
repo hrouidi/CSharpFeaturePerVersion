@@ -5,9 +5,7 @@ namespace CSharp12
 {
     public class PrimaryConstructorsTests
     {
-        class Houssam;
-        struct Rouidi;
-        interface IAm;
+       
 
         public struct Distance(double dx, double dy)
         {

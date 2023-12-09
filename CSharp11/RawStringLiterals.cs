@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
@@ -6,7 +7,7 @@ namespace CSharp11
     public class RawStringLiteralsTests
     {
         [Test]
-        public async Task Test1()
+        public void Test1()
         {
             string longMessage = """
                                  This is a long message.
@@ -29,6 +30,11 @@ namespace CSharp11
             var location = $$"""
                              You are at {{{10}}, {{25}}}
                              """;
+
+            //newlines in {}€
+            var tmp = $"You are at {
+                Environment.ProcessorCount
+            }";
         }
     }
 }
